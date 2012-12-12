@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>227</width>
-    <height>64</height>
+    <width>232</width>
+    <height>102</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -28,7 +28,21 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <widget class="QLabel" name="label1">
+      <property name="text">
+       <string>&lt;No file&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="DropFilenameLineEdit" name="dropTarget1"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="label2">
+      <property name="text">
+       <string>&lt;No file&gt;</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="DropFilenameLineEdit" name="dropTarget2"/>

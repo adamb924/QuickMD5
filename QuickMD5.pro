@@ -12,9 +12,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    DropFilenameLineEdit.cpp
+    DropFilenameLineEdit.cpp \
+    hash.cpp \
+    foldercomparisondialog.cpp
 
 HEADERS  += mainwindow.h \
-    DropFilenameLineEdit.h
+    DropFilenameLineEdit.h \
+    hash.h \
+    foldercomparisondialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    foldercomparisondialog.ui

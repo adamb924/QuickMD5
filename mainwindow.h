@@ -20,6 +20,7 @@ private:
 
 private slots:
     void hashChanged();
+    void doFolderComparison();
 };
 
 #endif // MAINWINDOW_H

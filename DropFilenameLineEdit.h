@@ -12,13 +12,17 @@
 
 class DropFilenameLineEdit: public QLineEdit
 {
+    Q_OBJECT
 public:
-	DropFilenameLineEdit();
+        DropFilenameLineEdit();
         DropFilenameLineEdit( QWidget * parent = 0 );
-	virtual ~DropFilenameLineEdit();
+        virtual ~DropFilenameLineEdit();
 private:
         void dragEnterEvent(QDragEnterEvent *event);
         void dropEvent ( QDropEvent * event );
+signals:
+        void filenameChanged( const QString & text );
+        void directoryChanged( const QString & text );
 };
 
 #endif /* DROPFILENAMELINEEDIT_H_ */

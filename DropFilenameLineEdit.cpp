@@ -8,6 +8,7 @@
 #include <QtGui>
 
 #include "DropFilenameLineEdit.h"
+#include "hash.h"
 
 DropFilenameLineEdit::DropFilenameLineEdit( QWidget * parent ) : QLineEdit(parent)
 {
@@ -35,13 +36,16 @@ void DropFilenameLineEdit::dropEvent(QDropEvent* event)
     {
         QString filename = event->mimeData()->urls().at(0).toLocalFile();
 
-        QCryptographicHash crypto(QCryptographicHash::Md5);
-        QFile file(filename);
-        file.open(QFile::ReadOnly);
-        while(!file.atEnd()){
-            crypto.addData(file.read(8192));
+        QDir d(filename);
+        if( d.exists() )
+        {
+            emit directoryChanged(filename);
+            setText(tr("<Folder>"));
         }
-        QByteArray hash = crypto.result();
-        setText(QString(hash.toHex()));
+        else
+        {
+            setText( fileHash(filename) );
+        }
+        emit filenameChanged(filename);
     }
 }
