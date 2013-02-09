@@ -59,18 +59,18 @@ void MainWindow::doFolderComparison()
     two.setSorting(QDir::Name);
     QStringList listTwo = two.entryList(QDir::Files,QDir::Name);
 
-    FolderComparisonDialog dialog(ui->label1->text(), ui->label2->text(), this);
+    FolderComparisonDialog * dialog = new FolderComparisonDialog(ui->label1->text(), ui->label2->text(), this);
 
     bool hasCommonFiles = false;
     for(int i=0; i<listOne.count(); i++)
         if( listTwo.contains( listOne.at(i) ) )
         {
-            dialog.addRow( listOne.at(i) , fileHash( one.absoluteFilePath(listOne.at(i))) , fileHash( two.absoluteFilePath(listOne.at(i))) );
+            dialog->addRow( listOne.at(i) , fileHash( one.absoluteFilePath(listOne.at(i))) , fileHash( two.absoluteFilePath(listOne.at(i))) );
             hasCommonFiles = true;
         }
 
     if( hasCommonFiles )
-        dialog.exec();
+        dialog->show();
     else
         QMessageBox::information(this, tr("No comparison to make"), tr("There are no file names in common between these folders."));
 }
